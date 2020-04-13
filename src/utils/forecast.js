@@ -14,7 +14,8 @@ const forecast = async (lat, lon, callback) => {
     callback(undefined, {
       city: data.name,
       temp: data.main.temp,
-      weather: data.weather[0].main,
+      weather: data.weather[0].description,
+      humidity: data.main.humidity,
     });
   } catch (err) {
     if (err) {

@@ -61,17 +61,22 @@ app.get("/weather", (req, res) => {
             error: "Unable to find location. Try another search",
           });
         }
-        forecast(latitude, longitude, (err, { city, temp, weather } = {}) => {
-          if (err) {
-            return res.send({ err });
+        forecast(
+          latitude,
+          longitude,
+          (err, { city, temp, weather, humidity } = {}) => {
+            if (err) {
+              return res.send({ err });
+            }
+            res.send({
+              forecast: weather,
+              temperature: temp,
+              location: location,
+              address: req.query.address,
+              humidity: humidity,
+            });
           }
-          res.send({
-            forecast: weather,
-            temperature: temp,
-            location: location,
-            address: req.query.address,
-          });
-        });
+        );
       }
     );
   }
