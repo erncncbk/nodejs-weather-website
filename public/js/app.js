@@ -4,6 +4,7 @@ const errorMessage = document.querySelector("#message-error");
 const messageOne = document.querySelector("#message-1");
 const messageTwo = document.querySelector("#message-2");
 const messageThree = document.querySelector("#message-3");
+const messageFour = document.querySelector("#message-4");
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -17,8 +18,9 @@ weatherForm.addEventListener("submit", (e) => {
         // console.log(data.location);
         // console.log(data.forecast);
         messageOne.textContent = `${data.location}`;
-        messageTwo.textContent = ` It is currently ${data.temperature} degress out`;
-        messageThree.textContent = `Weather forecast is ${data.forecast}`;
+        messageTwo.textContent = ` It is currently ${data.temperature} degress out. `;
+        messageThree.textContent = `Humidity : ${data.humidity}`;
+        messageFour.textContent = `Weather is ${data.forecast}`;
       }
     })
   );
